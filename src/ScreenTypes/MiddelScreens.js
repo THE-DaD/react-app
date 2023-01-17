@@ -13,16 +13,16 @@ export default function MiddelScreens(props){
     const [isExit, setIsExit] = useState(false)
     const [exitDir, setExitDir] = useState("")
     const [navDir, setNaveDir] = useState()
-    const [isStart, setIsStart] = useState(true)e
+    const [isStart, setIsStart] = useState(true)
     const [isSstanding, setIsStanding] = useState(false)
 
 
-        
 
-        function exitAnimation(exitDir){
+        function exitAnimation(exitDir, navDir){
             setIsExit(true)
             setIsStart(false)
-            setExitDir("walking-mtb")
+            setExitDir(exitDir)
+            setNaveDir(navDir)
 
         }
 
@@ -39,7 +39,7 @@ export default function MiddelScreens(props){
             <button className='arrow-right' onClick={exitAnimation}></button>
             {isExit ?  <div className={exitDir}>
                 <img style={{height: "150px", width: "150px" }} src={ericImage}  alt="Walking Man"/>
-                {setTimeout(() => {navigate(props.Right, {state: {previosePage: props.screen}})})}
+                {setTimeout(() => {navigate(navDir, {state: {previosePage: props.screen}})})}
                 </div> : null}  
 
             
